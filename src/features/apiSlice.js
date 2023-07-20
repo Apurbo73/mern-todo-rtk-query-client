@@ -11,7 +11,10 @@ export const apiSlice = createApi({
         method: "POST",
         body: data
       })
+    }),
+    getAllTodos:builder.query({
+        query: ()=> '/todos'
     })
   })
 });
-export const {useAddTodoMutation}=apiSlice;
+export const {useAddTodoMutation, useGetAllTodosQuery}=apiSlice;
