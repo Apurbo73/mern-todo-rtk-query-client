@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import { useAddTodoMutation } from "../features/apiSlice";
 const Form = () => {
-    
   const [todo, setTodo] = useState("");
-  const [addTodo, {isLoaading,isError,isSuccess,Error}]= useAddTodoMutation();
+  const [
+    addTodo,
+    { isLoaading, isError, isSuccess, Error }
+  ] = useAddTodoMutation();
 
   //handle Submit:
-  const handleSubmit=(e)=>{
+  const handleSubmit = e => {
     e.preventDefault();
-    addTodo({todo})
-  }
+    addTodo({ todo });
+    ResetForm();
+  };
+  //reset form:
+  const ResetForm = () => {
+    setTodo("");
+  };
   return (
     <div>
       <form className="w-25 mx-auto mt-5" onSubmit={handleSubmit}>
@@ -25,6 +32,7 @@ const Form = () => {
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            value={todo}
             onChange={e => {
               setTodo(e.target.value);
             }}
