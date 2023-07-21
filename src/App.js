@@ -1,19 +1,16 @@
-import React from 'react';
-import './App.css';
-import Form from './component/Form';
-import { useGetAllTodosQuery } from './features/apiSlice';
+import React from "react";
+import "./App.css";
+import Form from "./component/Form";
+import { useGetAllTodosQuery } from "./features/apiSlice";
+import AlTodos from "./component/AlTodos";
 
 function App() {
-  const {data:allTodos,isLoading, isError}=useGetAllTodosQuery();
+  const { data: allTodos, isLoading, isError } = useGetAllTodosQuery();
 
   return (
     <div className="App">
-      <Form></Form>
-      {
-        allTodos && allTodos.map((t)=>{
-          return <h1>{t.todo}</h1>
-        })
-      }
+      <Form />
+      {allTodos && allTodos.map(t => <AlTodos t={t} />)}
     </div>
   );
 }
