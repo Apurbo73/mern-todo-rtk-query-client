@@ -3,7 +3,7 @@ import React from "react";
 const AlTodos = ({ t }) => {
   return (
     <div className="col-lg-3 col-md-4 ">
-      <div className="card-body m-3 bg-warning ">
+      <div className="card-body m-3 bg-warning rounded">
         <div className=" mb-2 mt-2 m-2 ">
           <h6>
             {t.data}
