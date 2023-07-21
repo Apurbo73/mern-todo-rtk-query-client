@@ -4,20 +4,27 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8080"
   }),
-  tagTypes:["add"],
+  tagTypes: ["add"],
   endpoints: builder => ({
     addTodo: builder.mutation({
       query: data => ({
         url: `/todos`,
         method: "POST",
-        body: data,
+        body: data
       }),
-      invalidatesTags:["add"]
+      invalidatesTags: ["add"]
     }),
-    getAllTodos:builder.query({
-        query: ()=> '/todos',
-        providesTags:["add"]
+    getAllTodos: builder.query({
+      query: () => "/todos",
+      providesTags: ["add"]
+    }),
+    getSingleTodo: builder.query({
+      query: id => `/todos/${id}`
     })
   })
 });
-export const {useAddTodoMutation, useGetAllTodosQuery}=apiSlice;
+export const {
+  useAddTodoMutation,
+  useGetAllTodosQuery,
+  useGetSingleTodoQuery
+} = apiSlice;

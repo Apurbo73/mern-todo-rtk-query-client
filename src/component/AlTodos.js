@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AlTodos = ({ t }) => {
   return (
@@ -8,11 +9,15 @@ const AlTodos = ({ t }) => {
           <h6>
             {t.data}
           </h6>
+          <h6>
+            Id : {t._id}
+          </h6>
+          <Link to={`/detail/${t._id}`} className="btn btn-dark">detail</Link>
         </div>
         <br />
         <div className="d-flex ">
-          <div className="btn btn-success m-2">Edit</div> <br />
-          <div className="btn btn-danger m-2">Delete</div>
+          <div className="btn btn-success m-2 w-50">Edit</div> <br />
+          <div className="btn btn-danger m-2 w-50">Delete</div>
         </div>
       </div>
     </div>
