@@ -12,7 +12,7 @@ function App() {
       <Form />
       <h6 className="mt-3 mb-2">All Your Todos</h6>
       <div className="d-flex flex-wrap row">
-      {allTodos && allTodos.map(t => <AlTodos t={t} />)}
+      {allTodos && allTodos.map(t => <AlTodos key={t._id} t={t} />)}
 
       </div>
     </div>

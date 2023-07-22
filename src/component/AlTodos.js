@@ -16,8 +16,7 @@ const AlTodos = ({ t }) => {
         </div>
         <br />
         <div className="d-flex ">
-          <div className="btn btn-success m-2 w-50">Edit</div> <br />
-          <div className="btn btn-danger m-2 w-50">Delete</div>
+        
         </div>
       </div>
     </div>

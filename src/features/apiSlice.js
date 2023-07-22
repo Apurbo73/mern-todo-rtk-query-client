@@ -20,11 +20,22 @@ export const apiSlice = createApi({
     }),
     getSingleTodo: builder.query({
       query: id => `/todos/${id}`
+    }),
+    updateTodo:builder.mutation({
+      query:({id,data})=>(
+        
+        {
+          url:`/todos/${id}`,
+          method:"PUT",
+          body:data
+        }
+      )
     })
   })
 });
 export const {
   useAddTodoMutation,
   useGetAllTodosQuery,
-  useGetSingleTodoQuery
+  useGetSingleTodoQuery,
+  useUpdateTodoMutation
 } = apiSlice;
