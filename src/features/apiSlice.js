@@ -4,7 +4,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8080"
   }),
-  tagTypes: ["add"],
+  tagTypes: ["all", "singleTodo"],
   endpoints: builder => ({
     addTodo: builder.mutation({
       query: data => ({
@@ -12,24 +12,31 @@ export const apiSlice = createApi({
         method: "POST",
         body: data
       }),
-      invalidatesTags: ["add"]
+      invalidatesTags: ["all"]
     }),
     getAllTodos: builder.query({
       query: () => "/todos",
-      providesTags: ["add"]
+      providesTags: ["all"]
     }),
     getSingleTodo: builder.query({
-      query: id => `/todos/${id}`
+      query: id => `/todos/${id}`,
+      providesTags: ["singleTodo"]
     }),
-    updateTodo:builder.mutation({
-      query:({id,data})=>(
-        
-        {
-          url:`/todos/${id}`,
-          method:"PUT",
-          body:data
-        }
-      )
+    updateTodo: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/todos/${id}`,
+        method: "PUT",
+        body: data
+      }),
+      invalidatesTags: ["all", "singleTodo"]
+    }),
+    deleteTodo: builder.mutation({
+      query: id => ({
+        url: `/todos/${id}`,
+        method: "DELETE"
+      }),
+      invalidatesTags: ["all", "singleTodo"]
+
     })
   })
 });
@@ -37,5 +44,6 @@ export const {
   useAddTodoMutation,
   useGetAllTodosQuery,
   useGetSingleTodoQuery,
-  useUpdateTodoMutation
+  useUpdateTodoMutation,
+  useDeleteTodoMutation
 } = apiSlice;

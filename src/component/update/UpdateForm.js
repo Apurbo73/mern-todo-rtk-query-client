@@ -11,9 +11,7 @@ const UpdateForm = ({ singleTodo }) => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(todo);
-    updateTodo({ id,  data:{todo} });
-
-    
+    updateTodo({ id,  data:{todo} });  
   };
   return (
     <div>
